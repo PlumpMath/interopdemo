@@ -13,17 +13,19 @@ import java.util.Map;
  */
 public class Logger {
     private final String name;
+    private LogDestination logDestination;
 
     public Logger(String name) {
 
         this.name = name;
     }
 
+
     public void logMessage(LogMessage message){
-        System.out.println(name + "-" + message.createLogMessage());
+        logDestination.send(name, message.createLogMessage());
     }
 
-    public void logAribtrary(HashMap<String, Object> message){
+    public void logArbitrary(HashMap<String, Object> message){
         StringBuilder messageBuilder = new StringBuilder();
         for (Map.Entry<String, Object> entry : message.entrySet()) {
             messageBuilder.append(entry.getKey());
@@ -31,7 +33,14 @@ public class Logger {
             messageBuilder.append(entry.getValue());
             messageBuilder.append(" ");
         }
-        System.out.println(name + "-" + messageBuilder.toString());
+        logDestination.send(name, messageBuilder.toString());
+    }
 
+    public LogDestination getLogDestination() {
+        return logDestination;
+    }
+
+    public void setLogDestination(LogDestination logDestination) {
+        this.logDestination = logDestination;
     }
 }
