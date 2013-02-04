@@ -9,7 +9,7 @@
 
 ;; Creating instances
 
-
+(new LoggerFactory "")
 
 ;; or
 
