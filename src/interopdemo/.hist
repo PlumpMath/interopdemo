@@ -1,0 +1,5 @@
+;; -*- coding: utf-8-unix -*-
+;; Automatically written history of nREPL session
+;; Edit at your own risk
+
+("(log-oil-levels [500 100 200 100] \"bob-tanker\")" "(use 'interopdemo.core :reload)" "(Integer/toString 2)" "(class (int 20))" "(class 1100)" "(class [500 100 200])" "(log-oil-levels [500 100 200 100] \"bob-tanker\")" "(use 'interopdemo.core :reload)" "(source time)" "(now)" "(date)" "(use 'interopdemo.core :reload)" "(doc import)" "(use 'interopdemo.core :reload)" "(use 'interopdemo.core)" "(System/getProperty \"java.vm.version\")" "(dir String)" "(macroexpand-1 '(LoggerFactory. \"\"))" "(macroexpand-1 (LoggerFactory. \"\"))" "(new LoggerFactory \"\")" "(in-ns 'interopdemo.core)" "(new LoggerFactory \"\")" "(use 'interopdemo.core)")
