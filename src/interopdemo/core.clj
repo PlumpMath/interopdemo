@@ -1,7 +1,7 @@
 (ns interopdemo.core
   (:import
    ;; import the classes you want to use from a package into this namespace
-   [com.jentex.logging LoggerFactory LogMessageFactory LogDestination Configuration]
+   [com.jentex.logging LoggerFactory LogMessageFactory LogDestination Configuration LogMessage]
    ;; just import one class
            java.util.Date))
 
@@ -47,6 +47,11 @@
   (reify LogDestination
     (send [this context message]
       (println {:context context :message message}))))
+
+(defn create-log-message-custom [message]
+  (proxy [LogMessage] []
+    (createLogMessage []
+      message)))
 
 ;; These are enough to do basic interop calling java from clojure... probably 80% of what you need to can be achieved this way
 
