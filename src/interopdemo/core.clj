@@ -112,6 +112,24 @@
     (.setLogDestination (create-debug-destination))
     (.logArbitrary  (java.util.HashMap. {"oil-levels-check" 1 "debug" "Hello"}))))
 
+;; alltogether:
+
+(defn make-logger []
+  (.. (new LoggerFactory "RAMSGATE-DEPO")
+    (withOutBoundTo *out*)
+    (withConfig (HashMap. {"allow-foo" true}))
+    (build)))
+
+(defn log-oil-levels [levels tanker-id ]
+  (let [
+        message (.. (new LogMessageFactory)
+                    (oilLevelsMessage messageFactory (int-array levels) tanker-id (new Date)))
+        logger (make-logger)]
+      (doto (make-logger)
+    (.logMessage message)
+    (.setLogDestination (create-debug-destination))
+    (.logArbitrary  (HashMap. {"oil-levels-check" 1})))))
+
 
 
 ;; Other things: Setting fields
